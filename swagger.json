@@ -1,0 +1,143 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Test task",
+    "description": "Before using the application, you need to run docker Elastic Search according to the official instructions - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html",
+    "version": "1",
+    "contact": {
+      "email": "yurstan@gmail.com",
+      "name": "Yuriy Stanishevskiy"
+    }
+  },
+  "paths": {
+    "/api/object": {
+      "put": {
+        "description": "PUT method for create and update object for internal delay",
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "create object",
+        "tags": [
+          "Create_Update"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Candidate's object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Body"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "123"
+                },
+                "object": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Name"
+                    },
+                    "surname": {
+                      "type": "string",
+                      "example": "Surname"
+                    },
+                    "position": {
+                      "type": "string",
+                      "example": "candidate"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Successfully created"
+          },
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "123"
+                },
+                "object": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Name"
+                    },
+                    "surname": {
+                      "type": "string",
+                      "example": "Surname"
+                    },
+                    "position": {
+                      "type": "string",
+                      "example": "developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Successfully updated"
+          },
+          "404": {
+            "description": "Bad request, not found url"
+          },
+          "400": {
+            "description": "Bad request with message"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+
+      }
+    }
+  },
+  "definitions": {
+    "Body": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id in used",
+          "example": "123"
+        },
+        "object": {
+          "$ref":  "#/definitions/Object"
+        }
+      }
+    },
+    "Object": {
+      "type": "object",
+      "description": "Any object is allowed",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "candidate's name",
+          "example": "Name"
+        },
+        "surname": {
+          "type": "string",
+          "description": "candidate's surname",
+          "example": "Surname"
+        },
+        "position": {
+          "type": "string",
+          "description": "candidate's position",
+          "example": "candidate"
+        }
+      }
+    }
+  }
+}

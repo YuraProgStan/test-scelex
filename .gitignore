@@ -1,0 +1,13 @@
+# compiled output
+node_modules/
+
+# dotenv environment variables file
+.env
+
+#sert
+http_ca.crt
+
+# IDEs and editors
+.idea/
+
+package-lock.json
