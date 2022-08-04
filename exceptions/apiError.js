@@ -7,6 +7,9 @@ module.exports = class ApiError extends Error{
     static ElasticError(message, status= 400, errors = [{externalService: 'elastic search'}]){
         return new ApiError(message, status, errors)
     }
+    static RedisError(message, status= 400, errors = [{externalService: 'redis'}]){
+        return new ApiError(message, status, errors)
+    }
     static BadRequest(message, status= 400, errors = []){
             return new ApiError(message,status, errors)
     }
