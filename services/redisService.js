@@ -114,7 +114,7 @@ this id is already used in Elastic Search`)
                 const saveUser = {...data, status: false}
                 await client.set(userId, JSON.stringify(saveUser));
             }
-            setTimeout(async ()=> await client.del(userId),delay*2*60*1000);
+            setTimeout(async ()=> await client.del(userId),5*60*1000);
 
         } catch (err) {
             throw ApiError.RedisError('Redis Client Error', 400, [err])
